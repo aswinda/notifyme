@@ -5,7 +5,18 @@ volumes:
     driver: local
 
 services:
-
+  api:
+    container_name: 'owl_api'
+    build: ./application/api
+    restart: 'on-failure'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - elasticsearch
+      - mysql
+      - redis
+    networks:
+      - owl-local-dev
   redis:
     image: redis:3.2-alpine
     volumes:

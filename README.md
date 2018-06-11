@@ -9,3 +9,6 @@ running in development
 ```
 docker-compose -d docker-compose.local.yml up
 ```
+
+note:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html

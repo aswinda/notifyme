@@ -17,6 +17,7 @@ services:
       - redis
     networks:
       - owl-local-dev
+      
   redis:
     image: redis:3.2-alpine
     volumes:

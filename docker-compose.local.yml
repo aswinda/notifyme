@@ -1,9 +1,5 @@
 version: "3.2"
 
-volumes:
-  esdata:
-    driver: local
-
 services:
   api:
     container_name: 'owl_api'
@@ -63,7 +59,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - esdata:/usr/share/elasticsearch/data
+      - ./data/esdata:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
     networks:

@@ -7,7 +7,7 @@ docker-compose
 
 running in development
 ```
-docker-compose -d docker-compose.local.yml up
+docker-compose -f docker-compose.local.yml up
 ```
 
 note:

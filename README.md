@@ -1,12 +1,11 @@
-# Owl Notification
+# Notifyme
 A smart and scalable notification microservice
 
 you must install all depedencies first:
 docker
 docker-compose
 
-running in development
-```
+running in development```
 docker-compose -f docker-compose.local.yml up
 ```
 

@@ -6,11 +6,7 @@ services:
     build: ./application/api
     restart: 'on-failure'
     ports:
-      - '8080:8080'
-    depends_on:
-      - elasticsearch
-      - mysql
-      - redis
+      - '8080:8080'ls
     networks:
       - owl-local-dev
       

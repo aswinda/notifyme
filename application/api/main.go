@@ -5,6 +5,7 @@ import (
     "log"
     "os"
     "fmt"
+    "."
 )
 
 // main function to boot up everything

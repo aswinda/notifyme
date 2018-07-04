@@ -2,8 +2,10 @@ package repositories
 
 import (
 	"fmt"
-	"github.com/aswinda/notifyme/interfaces"
-	"github.com/aswinda/notifyme/models"
+
+	"github.com/afex/hystrix-go/hystrix"
+	"github.com/aswinda/notifyme/application/api/interfaces"
+	"github.com/aswinda/notifyme/application/api/models"
 )
 
 type UserRepositoryWithCircuitBreaker struct {
@@ -34,17 +36,16 @@ func (repository *UserRepositoryWithCircuitBreaker) GetUserDetail(userId int) (m
 }
 
 func (repository *UserRepository) GetUserDetail(userId int) (models.UserModel, error) {
-	row, err := repository.Query(fmt.Sprintf("
-			SELECT
-				*
-			FROM
-				users
-			WHERE id = 	'%d'", userId
-		))
+	row, err := repository.Query(fmt.Sprintf("SELECT * FROM users WHERE id = '%d'", userId))
 
-		if err != nil {
-			return models.UserModel{}, err
-		}
+	if err != nil {
+		return models.UserModel{}, err
+	}
 
-		return row, nil
+	var user models.UserModel
+
+	row.Next()
+	row.Scan(&user.Id, &user.Name, &user.Age)
+
+	return user, nil
 }

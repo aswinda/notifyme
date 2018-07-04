@@ -1,9 +1,10 @@
-package infrastructure
+package infrastructures
 
 import (
 	"database/sql"
 	"fmt"
-	"github.com/aswinda/notifyme/interfaces"
+
+	"github.com/aswinda/notifyme/application/api/interfaces"
 )
 
 type MysqlHandler struct {
@@ -18,10 +19,10 @@ func (handler *MysqlHandler) Execute(statement string) {
 	handler.Conn.Exec(statement)
 }
 
-func (handler *MysqlHandler) Query(statement string) (interface.IRow, err) {
+func (handler *MysqlHandler) Query(statement string) (interfaces.IRow, error) {
 	rows, err := handler.Conn.Query(statement)
 
-	if err := nill {
+	if err == nil {
 		fmt.Println(err)
 		return new(MysqlRow), err
 	}
